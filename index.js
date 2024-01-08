@@ -27,8 +27,8 @@ const mongoSanitize = require('express-mongo-sanitize'); //this is so that we ca
 const session = require('express-session'); //this is so that we can use the express-session package
 const MongoStore = require('connect-mongo');
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp'; //this is so that we can use the .env file
-//const dbUrl = 'mongodb://localhost:27017/yelp-camp';
+//const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp'; //this is so that we can use the .env file
+const dbUrl = 'mongodb://localhost:27017/yelp-camp';
 
 mongoose.connect(dbUrl);
 
@@ -82,7 +82,7 @@ const sessionConfig = {
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
-    //secure: true,
+    secure: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7
 
