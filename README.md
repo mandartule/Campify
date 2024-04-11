@@ -47,3 +47,7 @@ Remember to replace `your-username` with your actual GitHub username in the `git
 This will guide users through the process of cloning your
 repository, installing the necessary dependencies, and starting
 the server.
+
+
+//Note
+- if the map load fails update the token

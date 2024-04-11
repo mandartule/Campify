@@ -19,13 +19,13 @@ module.exports.createCampground = async (req, res, next) => {
         limit: 1 //for geocoding
     }).send() //for geocoding
 
-    console.log(geoData.body.features[0].geometry);
+    //console.log(geoData.body.features[0].geometry);
 
     const camp = new Campground(req.body.campground); //first creating a new campground with the data that is passed in the req.body.campground object
     camp.geometry = geoData.body.features[0].geometry; //for geocoding
     camp.image = req.files.map(f => ({ url: f.path, filename: f.filename })); //this is so that we can save the images to the database
     camp.author = req.user._id; //this is so that we can save the id of the user that created the campground
-    await camp.save(); //second saving the new campground to the database
+    await camp.save().catch(err => console.log(err)); //second saving the new campground to the database
     console.log(camp);
     req.flash('success', 'Successfully made a new campground!') //this is so that we can use the flash message in the index.ejs file
     res.redirect(`/campgrounds/${camp._id}`); //third redirecting to the show page of the new campground
