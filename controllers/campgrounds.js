@@ -19,6 +19,8 @@ module.exports.createCampground = async (req, res, next) => {
         limit: 1 //for geocoding
     }).send() //for geocoding
 
+    console.log(geoData.body.features[0].geometry);
+
     const camp = new Campground(req.body.campground); //first creating a new campground with the data that is passed in the req.body.campground object
     camp.geometry = geoData.body.features[0].geometry; //for geocoding
     camp.image = req.files.map(f => ({ url: f.path, filename: f.filename })); //this is so that we can save the images to the database
@@ -60,6 +62,18 @@ module.exports.renderEditForm = async (req, res) => {
 module.exports.updateCampground = async (req, res) => {
     const { id } = req.params; //destructuring the id from the req.params object
     const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground }); //finding the campground with the id that is passed in the url and updating it with the data that is passed in the req.body.campground object
+    
+    // Get the new coordinates for the updated location
+    const geoData = await geocoder.forwardGeocode({
+        query: req.body.campground.location,
+        limit: 1
+    }).send();
+
+    // Update the geometry field with the new coordinates
+    campground.geometry = geoData.body.features[0].geometry;
+    
+    
+    
     const imgs = req.files.map(f => ({ url: f.path, filename: f.filename })); //this is so that we can save the images to the database
     campground.image.push(...imgs); //we are not pushing array we are puching individual imgaes
     

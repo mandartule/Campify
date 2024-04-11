@@ -9,6 +9,8 @@ const map = new mapboxgl.Map({
 });
 
 map.addControl(new mapboxgl.NavigationControl());
+console.log(mapToken);
+//console.log(campground.geometry.coordinates);
 
 var marker = new mapboxgl.Marker()
     .setLngLat(campground.geometry.coordinates)
