@@ -30,7 +30,7 @@ module.exports.createCampground = async (req, res, next) => {
     
     camp.author = req.user._id; //this is so that we can save the id of the user that created the campground
     
-    await camp.save().catch(err => console.log(err)); //second saving the new campground to the database
+    await camp.save();//second saving the new campground to the database
     console.log(camp);
     req.flash('success', 'Successfully made a new campground!') //this is so that we can use the flash message in the index.ejs file
     res.redirect(`/campgrounds/${camp._id}`); //third redirecting to the show page of the new campground
