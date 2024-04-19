@@ -129,13 +129,17 @@ app.all('*', (req, res, next) => {
   next(new ExpressError('Page Not Found', 404));
 });
 
+// app.use((err, req, res, next) => {
+//   const { statusCode , message  } = err;
+//   if (!err.message) err.message = 'Oh No, Something Went Wrong!' + err.message;
+//   res.status(statusCode).render('error', { err });
+
+// });
 app.use((err, req, res, next) => {
-  const { statusCode = 500, message = 'Something went wrong' } = err;
-  if (!err.message) err.message = 'Oh No, Something Went Wrong!' + err.message;
-  res.status(statusCode).render('error', { err });
-
-});
-
+  const { statusCode = 500} = err;
+  if (!err.message) err.message = 'Oh No, Something Went Wrong!'
+  res.status(statusCode).render('campgrounds/error', { err })
+})
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
