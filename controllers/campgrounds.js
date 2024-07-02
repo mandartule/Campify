@@ -13,44 +13,49 @@ module.exports.renderNewForm = (req, res) => {
     res.render('campgrounds/new'); //rendering the new.ejs file
 }
 
-// module.exports.createCampground = async (req, res, next) => {
+module.exports.createCampground = async (req, res, next) => {
     
-//     const geoData = await geocoder.forwardGeocode({ //for geocoding
-//         query: req.body.campground.location, //for geocoding
-//         limit: 1 //for geocoding
-//     }).send() //for geocoding
+    const geoData = await geocoder.forwardGeocode({ //for geocoding
+        query: req.body.campground.location, //for geocoding
+        limit: 1 //for geocoding
+    }).send() //for geocoding
     
-//     //console.log(geoData.body.features[0].geometry);
+    console.log(geoData.body.features[0].geometry);
 
-//     const camp = new Campground(req.body.campground); //first creating a new campground with the data that is passed in the req.body.campground object
+    const camp = new Campground(req.body.campground); //first creating a new campground with the data that is passed in the req.body.campground object
     
-//     camp.geometry = geoData.body.features[0].geometry; //for geocoding
+    camp.geometry = geoData.body.features[0].geometry; //for geocoding
     
-//     camp.image = req.files.map(f => ({ url: f.path, filename: f.filename })); //this is so that we can save the images to the database
+    camp.image = req.files.map(f => ({ url: f.path, filename: f.filename })); //this is so that we can save the images to the database
     
-//     camp.author = req.user._id; //this is so that we can save the id of the user that created the campground
+    camp.author = req.user._id; //this is so that we can save the id of the user that created the campground
     
-//     await camp.save();//second saving the new campground to the database
-//     console.log(camp);
-//     req.flash('success', 'Successfully made a new campground!') //this is so that we can use the flash message in the index.ejs file
-//     res.redirect(`/campgrounds/${camp._id}`); //third redirecting to the show page of the new campground
-//  }
+    await camp.save();//second saving the new campground to the database
+    console.log(camp);
+    
+    req.flash('success', 'Successfully made a new campground!') //this is so that we can use the flash message in the index.ejs file
+    res.redirect(`/campgrounds/${camp._id}`); //third redirecting to the show page of the new campground
+ }
 
-module.exports.createNewCampground = async (req, res, next) => {
-    const geoData = await geocoder.forwardGeocode({
-        query: req.body.campground.location,
-        limit:1
-    }).send()
 
-    const campground = new Campground(req.body.campground)
-    campground.geometry = geoData.body.features[0].geometry
-    campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }))
-    campground.author = req.user._id
-    await campground.save()
-    // console.log(campground)
-    req.flash('success', 'Successfully made a new campground!')
-    res.redirect(`/campgrounds/${campground._id}`)
-}
+// module.exports.createNewCampground = async (req, res, next) => {
+//     const geoData = await geocoder.forwardGeocode({
+//         query: req.body.campground.location,
+//         limit:1
+//     }).send()
+
+//     console.log(geoData);
+
+//     const campground = new Campground(req.body.campground)
+
+//     campground.geometry = geoData.body.features[0].geometry
+//     campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }))
+//     campground.author = req.user._id
+//     await campground.save()
+//     console.log(campground)
+//     req.flash('success', 'Successfully made a new campground!')
+//     res.redirect(`/campgrounds/${campground._id}`)
+// }
 
 
 module.exports.showCampground = async (req, res) => {
