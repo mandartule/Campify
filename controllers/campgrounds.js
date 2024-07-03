@@ -20,16 +20,17 @@ module.exports.createCampground = async (req, res, next) => {
         limit: 1 //for geocoding
     }).send() //for geocoding
     
-    console.log(geoData.body.features[0].geometry);
+    console.log("got geoData");
 
     const camp = new Campground(req.body.campground); //first creating a new campground with the data that is passed in the req.body.campground object
-    
+    console.log("camp created");
+
     camp.geometry = geoData.body.features[0].geometry; //for geocoding
-    
+    console.log("geometry added");
     camp.image = req.files.map(f => ({ url: f.path, filename: f.filename })); //this is so that we can save the images to the database
-    
+    console.log("images added");
     camp.author = req.user._id; //this is so that we can save the id of the user that created the campground
-    
+    console.log("author added");
     await camp.save();//second saving the new campground to the database
     console.log(camp);
     
@@ -118,7 +119,7 @@ module.exports.updateCampground = async (req, res) => {
 
 }
 
-module.exports.deleteCampground = async (req, res) => {
+   module.exports.deleteCampground = async (req, res) => {
 
     const { id } = req.params; //destructuring the id from the req.params object
 
