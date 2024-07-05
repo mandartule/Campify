@@ -11,9 +11,17 @@ const {storage} = require('../cloudinary');
 const upload = multer({storage});
 
 router.route('/')
-    .get(catchAsync(campgrounds.index))
-    .post(isLoggedIn, upload.array('image'),validateCampground,catchAsync(campgrounds.createCampground))
-    
+    .get((req, res, next) => {
+        console.log('GET /campgrounds');
+        return catchAsync(campgrounds.index)(req, res, next);
+    })
+       
+    .post(isLoggedIn, upload.array('image'), validateCampground, (req, res, next) => {
+        console.log('POST /campgrounds');
+        console.log('Request Body:', req.body);
+        console.log('Uploaded Images:', req.files);
+        return catchAsync(campgrounds.createCampground)(req, res, next);
+    });
 
 router.get('/new', isLoggedIn, campgrounds.renderNewForm);
 
