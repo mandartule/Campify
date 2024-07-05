@@ -12,13 +12,13 @@ module.exports.storeReturnTo = (req, res, next) => {
 }
 
 module.exports.isLoggedIn = (req, res, next) => {
-    console.log("checking is logged in")
+    
     if (!req.isAuthenticated()) { //if the user is not logged in
         req.session.returnTo = req.originalUrl; //this is so that we can redirect the user to the page they were trying to access after they login
         req.flash('error', 'You must be signed in first!'); //this is so that we can use the flash message in the index.ejs file
         return res.redirect('/login');
     }
-    console.log("checked is logged in")
+   
     next();
 
     
@@ -26,14 +26,11 @@ module.exports.isLoggedIn = (req, res, next) => {
 
 
 module.exports.validateCampground = (req, res, next) => {
-    console.log("campground for validation")
     const { error } = campgroundSchema.validate(req.body); //this is so that we can use the campgroundSchema from the schemas.js file
     if (error) {
-        console.log("error in validation")
         const msg = error.details.map(el => el.message).join(',');
         throw new ExpressError(msg, 400);
     } else {
-        console.log("no error in validation")
         next();
     }
 }

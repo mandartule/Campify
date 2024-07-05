@@ -15,50 +15,27 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.createCampground = async (req, res, next) => {
     
-    console.log("sent request for geocoding");
-
     const geoData = await geocoder.forwardGeocode({ //for geocoding
         query: req.body.campground.location, //for geocoding
         limit: 1 //for geocoding
     }).send() //for geocoding
     
-    console.log("got geoData");
+ 
 
     const camp = new Campground(req.body.campground); //first creating a new campground with the data that is passed in the req.body.campground object
-    console.log("camp created");
+  
 
     camp.geometry = geoData.body.features[0].geometry; //for geocoding
-    console.log("geometry added");
+    
     camp.image = req.files.map(f => ({ url: f.path, filename: f.filename })); //this is so that we can save the images to the database
-    console.log("images added");
+  
     camp.author = req.user._id; //this is so that we can save the id of the user that created the campground
-    console.log("author added");
+  
     await camp.save();//second saving the new campground to the database
-    console.log(camp);
     
     req.flash('success', 'Successfully made a new campground!') //this is so that we can use the flash message in the index.ejs file
     res.redirect(`/campgrounds/${camp._id}`); //third redirecting to the show page of the new campground
  }
-
-
-// module.exports.createNewCampground = async (req, res, next) => {
-//     const geoData = await geocoder.forwardGeocode({
-//         query: req.body.campground.location,
-//         limit:1
-//     }).send()
-
-//     console.log(geoData);
-
-//     const campground = new Campground(req.body.campground)
-
-//     campground.geometry = geoData.body.features[0].geometry
-//     campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }))
-//     campground.author = req.user._id
-//     await campground.save()
-//     console.log(campground)
-//     req.flash('success', 'Successfully made a new campground!')
-//     res.redirect(`/campgrounds/${campground._id}`)
-// }
 
 
 module.exports.showCampground = async (req, res) => {
@@ -120,7 +97,6 @@ module.exports.updateCampground = async (req, res) => {
 }
 
    module.exports.deleteCampground = async (req, res) => {
-    console.log("deleting campground");
     const { id } = req.params; //destructuring the id from the req.params object
 
     const campground = await Campground.findById(id); // Retrieve the campground to get the images
