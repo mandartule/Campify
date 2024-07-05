@@ -109,7 +109,7 @@ map.on('load', () => {
 
         const coordinates = e.features[0].geometry.coordinates.slice();
 
-        console.log(popUpMarkup);
+        // console.log(popUpMarkup);
         // Ensure that if the map is zoomed out such that
         // multiple copies of the feature are visible, the
         // popup appears over the copy being pointed to.

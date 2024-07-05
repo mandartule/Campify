@@ -15,6 +15,8 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.createCampground = async (req, res, next) => {
     
+    console.log("sent request for geocoding");
+
     const geoData = await geocoder.forwardGeocode({ //for geocoding
         query: req.body.campground.location, //for geocoding
         limit: 1 //for geocoding
@@ -100,8 +102,6 @@ module.exports.updateCampground = async (req, res) => {
     // Update the geometry field with the new coordinates
     campground.geometry = geoData.body.features[0].geometry;
     
-    
-    
     const imgs = req.files.map(f => ({ url: f.path, filename: f.filename })); //this is so that we can save the images to the database
     campground.image.push(...imgs); //we are not pushing array we are puching individual imgaes
     
@@ -120,8 +120,17 @@ module.exports.updateCampground = async (req, res) => {
 }
 
    module.exports.deleteCampground = async (req, res) => {
-
+    console.log("deleting campground");
     const { id } = req.params; //destructuring the id from the req.params object
+
+    const campground = await Campground.findById(id); // Retrieve the campground to get the images
+    // Check if there are images to delete
+    if (campground.image) {
+      
+        for (let i of campground.image) { // Loop through the images
+            await cloudinary.uploader.destroy(i.filename); // Delete each image from Cloudinary
+        }
+    }
 
     await Campground.findByIdAndDelete(id); //finding the campground with the id that is passed in the url and deleting it
     req.flash('success', 'Successfully deleted campground!') //this is so that we can use the flash message in the index.ejs file
