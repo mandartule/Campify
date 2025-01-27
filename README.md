@@ -2,7 +2,7 @@
 
 Campify is a web application that helps users find camping camps nearby, add their own camps, and review others' camps. Experience the adventure with Campify!
 
-Explore the live version of the application [here](https://campify-05lq.onrender.com).
+Explore the live version of the application [here](https://campify-fg5r.onrender.com/).
 
 ![Screenshot 2024-05-04 180248](https://github.com/mandartule/Campify/assets/105853152/b49fcc04-53f9-4b13-be37-a4d5ff533f74)
 
