@@ -116,8 +116,7 @@ app.use('/campgrounds/:id/review', reviewRoutes); //this is so that we can use t
 
 
 app.get('/', (req, res) => {
-
-  res.render('home');
+  res.render('home', { isHomePage: true });
 });
 
 

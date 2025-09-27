@@ -5,7 +5,22 @@ const mapBoxToken = process.env.MAPBOX_TOKEN; //for geocoding
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken }); //for geocoding
 
 module.exports.index = async (req, res) => {
-    const campgrounds = await Campground.find({}); //finding all campgrounds in the database
+    const { search } = req.query;
+    let campgrounds;
+    
+    if (search) {
+        // Search campgrounds by title, description, or location
+        campgrounds = await Campground.find({
+            $or: [
+                { title: { $regex: search, $options: 'i' } },
+                { description: { $regex: search, $options: 'i' } },
+                { location: { $regex: search, $options: 'i' } }
+            ]
+        });
+        //else show all
+    } else {
+        campgrounds = await Campground.find({});
+    }
     res.render('campgrounds/index', { campgrounds }); //rendering the index.ejs file and passing the campgrounds object to it
 }
 
@@ -96,7 +111,7 @@ module.exports.updateCampground = async (req, res) => {
 
 }
 
-   module.exports.deleteCampground = async (req, res) => {
+module.exports.deleteCampground = async (req, res) => {
     const { id } = req.params; //destructuring the id from the req.params object
 
     const campground = await Campground.findById(id); // Retrieve the campground to get the images

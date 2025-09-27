@@ -1,0 +1,948 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ===========================================
+   CSS VARIABLES
+   =========================================== */
+:root {
+    --primary-color: #2D5A27;
+    /* Forest Green */
+    --secondary-color: #8FBC8F;
+    /* Light Forest */
+    --accent-color: #FFB347;
+    /* Warm Orange */
+    --text-primary: #2C3E50;
+    /* Dark Blue-Gray */
+    --text-secondary: #7F8C8D;
+    /* Light Gray */
+    --background-light: #F8F9FA;
+    /* Off White */
+    --background-dark: #1A1A1A;
+    /* Dark */
+    --card-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+
+    /* Typography Variables */
+    --font-family-primary: 'Poppins', sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+}
+
+/* ===========================================
+   TYPOGRAPHY & BASE STYLES
+   =========================================== */
+body {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+    line-height: var(--line-height-tight);
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    margin-top: 1rem !important;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: var(--font-size-3xl);
+}
+
+h3 {
+    font-size: var(--font-size-2xl);
+}
+
+h4 {
+    font-size: var(--font-size-xl);
+}
+
+h5 {
+    font-size: var(--font-size-lg);
+}
+
+h6 {
+    font-size: var(--font-size-base);
+}
+
+p {
+    margin-bottom: 1rem;
+    line-height: var(--line-height-relaxed);
+}
+
+.text-small {
+    font-size: var(--font-size-sm);
+}
+
+.text-large {
+    font-size: var(--font-size-lg);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* ===========================================
+   LAYOUT & CONTAINERS
+   =========================================== */
+main.container {
+    margin-top: 100px !important;
+    padding-top: 1rem;
+}
+
+.card.mb-3 {
+    position: relative;
+    z-index: 1;
+}
+
+#map {
+    margin-top: 2rem !important;
+    z-index: 1;
+    position: relative;
+}
+
+/* ===========================================
+   NAVIGATION STYLES
+   =========================================== */
+.modern-navbar {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    padding: 0.8rem 0;
+    z-index: 1050 !important;
+}
+
+.modern-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-color) !important;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+}
+
+.modern-brand:hover {
+    color: var(--secondary-color) !important;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+}
+
+.modern-brand i {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
+
+.modern-nav-link {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    text-decoration: none !important;
+}
+
+.modern-nav-link:hover {
+    background: rgba(45, 90, 39, 0.1);
+    color: var(--primary-color) !important;
+    transform: translateY(-2px);
+    text-decoration: none !important;
+}
+
+.btn-register {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border-radius: 20px;
+    margin-left: 0.5rem;
+    text-decoration: none !important;
+}
+
+.btn-register:hover {
+    background: var(--secondary-color) !important;
+    transform: translateY(-2px);
+    text-decoration: none !important;
+}
+
+.custom-toggler {
+    border: none;
+    padding: 0.25rem;
+    background: transparent;
+}
+
+.custom-toggler:focus {
+    box-shadow: none;
+}
+
+.custom-toggler-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--primary-color);
+    margin: 4px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.modern-dropdown {
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.modern-dropdown .dropdown-item {
+    padding: 0.7rem 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.modern-dropdown .dropdown-item:hover {
+    background: var(--background-light);
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+/* ===========================================
+   SEARCH FUNCTIONALITY
+   =========================================== */
+.navbar-search {
+    flex: 1;
+    max-width: 400px;
+    margin: 0 2rem;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    border: 2px solid #e9ecef !important;
+    border-right: none !important;
+    border-radius: 25px 0 0 25px !important;
+    padding: 0.6rem 1rem !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: none !important;
+    background: white !important;
+    outline: none !important;
+}
+
+.search-btn {
+    background: var(--primary-color) !important;
+    border: 2px solid var(--primary-color) !important;
+    border-radius: 0 25px 25px 0 !important;
+    color: white !important;
+    padding: 0.6rem 1rem !important;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+    transform: scale(1.05);
+}
+
+.search-btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(45, 90, 39, 0.25) !important;
+}
+
+.search-btn i {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.search-active #map,
+body.search-active #map {
+    display: none !important;
+}
+
+.search-active h1,
+body.search-active .page-title {
+    display: none !important;
+}
+
+.search-active .campgrounds-grid {
+    margin-top: 2rem;
+}
+
+.search-results-container {
+    min-height: 400px;
+    padding-top: 1rem;
+}
+
+/* ===========================================
+   NO RESULTS MESSAGE
+   =========================================== */
+.no-results-container {
+    margin: 2rem auto !important;
+    padding: 3rem 2rem;
+    max-width: 600px;
+    text-align: center;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    animation: fadeInUp 0.5s ease-out;
+    position: relative;
+    z-index: 1;
+}
+
+.no-results-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.no-results-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.no-results-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.no-results-container h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.no-results-container p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.search-term {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.no-results-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.no-results-actions .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.no-results-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===========================================
+   HOME PAGE STYLES (FULL SCREEN) - FIXED VERSION
+   =========================================== */
+
+/* Remove margins for home page */
+.home-page {
+    margin: 0 !important;
+    padding: 0 !important;
+
+}
+
+.home-main {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Hero Section - Full Coverage */
+.home-hero-section {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://res.cloudinary.com/dbmjwxqqu/image/upload/v1704532258/YelpCamp/Sources/tn7psft9cpgmklyqqkwg.jpg");
+    background-size: cover;
+    /* Back to cover for better image quality */
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Ensure absolutely full coverage */
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+/* Home Brand - Centered */
+.home-brand {
+    animation: fadeInDown 1s ease-out;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.home-brand i {
+    font-size: 4rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+    text-shadow: 0 0 20px rgba(255, 179, 71, 0.5);
+}
+
+.home-brand h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px;
+}
+
+/* Hero Content - Centered */
+.hero-title {
+    font-size: 3.6rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease-out 0.3s both;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    color: white;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease-out 0.6s both;
+    text-align: center;
+}
+
+/* Hero Buttons - Centered */
+.hero-buttons {
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease-out 0.9s both;
+    text-align: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-hero-primary,
+.btn-hero-secondary {
+    padding: 1.2rem 2.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    min-width: 200px;
+}
+
+.btn-hero-primary {
+    background: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    color: white;
+    box-shadow: 0 8px 25px rgba(45, 90, 39, 0.4);
+}
+
+.btn-hero-primary:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(45, 90, 39, 0.6);
+    text-decoration: none;
+}
+
+.btn-hero-secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-hero-secondary:hover {
+    background: white;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+}
+
+/* Hero Stats - Centered */
+.hero-stats {
+    animation: fadeInUp 1s ease-out 1.2s both;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-stats .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+}
+
+.hero-stats .col-md-4 {
+    flex: 1;
+    max-width: 180px;
+}
+
+.stat-item {
+    padding: 1.5rem 1rem;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.stat-number {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(255, 179, 71, 0.5);
+    display: block;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+    color: white;
+    font-weight: 500;
+}
+
+/* Login Link in Corner - Fixed Position */
+.home-login-link {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 10;
+    animation: fadeInRight 1s ease-out 1.5s both;
+}
+
+.login-corner-btn {
+    background: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(0, 0, 0, 0.701);
+    color: rgb(38, 31, 31);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.login-corner-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+}
+
+
+/* Home Page Footer Credit - LEFT POSITIONED */
+.home-footer-credit {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    /* Changed from left: 50% to left: 2rem */
+    /* Remove transform: translateX(-50%); */
+    z-index: 10;
+    animation: fadeInLeft 1s ease-out 1.8s both;
+    /* Changed animation */
+    width: auto;
+    max-width: 300px;
+    /* Set max width */
+}
+
+.home-footer-credit .creator-credit {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+}
+
+.home-creator-link {
+    color: var(--accent-color) !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    margin-left: 0.2rem;
+}
+
+.home-creator-link:hover {
+    color: white !important;
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(255, 179, 71, 0.4);
+    text-decoration: none !important;
+}
+
+.home-footer-credit .text-danger {
+    color: #ff6b6b !important;
+    animation: pulse 2s infinite;
+}
+
+/* Remove margins for home page - NO ZOOM */
+.home-page {
+    margin: 0 !important;
+    padding: 0 !important;
+    /* Remove zoom: 0.8; - this was causing the 80% coverage issue */
+}
+
+.home-main {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Hero Section - Full Coverage */
+.home-hero-section {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://res.cloudinary.com/dbmjwxqqu/image/upload/v1704532258/YelpCamp/Sources/tn7psft9cpgmklyqqkwg.jpg");
+    background-size: cover;
+    /* Back to cover for better image quality */
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Ensure absolutely full coverage */
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* Pulse animation for heart icon */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ===========================================
+   FOOTER STYLES - REDUCED HEIGHT BUT ORIGINAL STYLE
+   =========================================== */
+.modern-footer {
+    background: var(--background-dark);
+    color: white;
+    padding: 1.5rem 0 1rem;
+    margin-top: auto;
+}
+
+.footer-brand h5 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0;
+}
+
+.footer-info {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.creator-credit {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+.creator-link {
+    color: var(--accent-color) !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+}
+
+.creator-link:hover {
+    color: white !important;
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(255, 179, 71, 0.4);
+}
+
+/* ===========================================
+   ANIMATIONS
+   =========================================== */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===========================================
+   UTILITY CLASSES
+   =========================================== */
+.fas,
+.far,
+.fab {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 6 Brands" !important;
+}
+
+.search-loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+.search-loading i {
+    animation: spin 1s linear infinite;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - UPDATED
+   =========================================== */
+@media (max-width: 768px) {
+    /* Previous responsive rules... */
+
+    .hero-title {
+        font-size: 2.2rem;
+        /* Reduced from 2.5rem */
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        /* Reduced from 1.1rem */
+    }
+
+    .home-brand h1 {
+        font-size: 2.2rem;
+        /* Reduced from 2.5rem */
+    }
+
+    .home-brand i {
+        font-size: 2.8rem;
+        /* Reduced from 3rem */
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+        /* Reduced from 2rem */
+    }
+
+    .home-footer-credit {
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        transform: none;
+    }
+
+    .home-footer-credit .creator-credit {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 1.8rem;
+        /* Reduced from 2rem */
+    }
+
+    .home-brand h1 {
+        font-size: 1.8rem;
+        /* Reduced from 2rem */
+    }
+
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        padding: 0.7rem 1.2rem;
+        /* Reduced padding */
+        font-size: 0.85rem;
+        /* Reduced from 0.9rem */
+    }
+}
+
+

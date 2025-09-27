@@ -4,8 +4,19 @@
 
     </div>
 
-    <h1 style="text-align: center;" class="mb-3">All Campgrounds</h1>
-
+    <h1 style="text-align: center;" class="mb-3">
+        <% if (typeof search !== 'undefined' && search) { %>
+            Search Results for "<%= search %>"
+        <% } else { %>
+            All Campgrounds
+        <% } %>
+    </h1>
+    <% if (typeof search !== 'undefined' && search) { %>
+        <div class="text-center mb-3">
+            <a href="/campgrounds" class="btn btn-outline-secondary">Clear Search</a>
+        </div>
+    <% } %>
+    
     <% for(let campground of campgrounds ){ %>
         <div class="card mb-3">
             <div class="row">
