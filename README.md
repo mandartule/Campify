@@ -4,11 +4,17 @@ Campify is a web application that helps users find camping camps nearby, add the
 
 Explore the live version of the application [here](https://campify-fg5r.onrender.com/).
 
-![Screenshot 2024-05-04 180248](https://github.com/mandartule/Campify/assets/105853152/b49fcc04-53f9-4b13-be37-a4d5ff533f74)
+### Home Page
+<img width="3195" height="1737" alt="Screenshot 2025-09-27 190834" src="https://github.com/user-attachments/assets/fef753b3-d5f1-4d7c-92a5-cb2256280070" />
 
-![Screenshot 2024-05-04 180348](https://github.com/mandartule/Campify/assets/105853152/b7ba37a3-fd9d-4d59-a6b2-556008d25a0a)
+### Login Page
+<img width="3190" height="1733" alt="Screenshot 2025-09-27 191552" src="https://github.com/user-attachments/assets/13b75233-a80f-4c2d-9a21-c6564b1b45c2" />
 
-![Screenshot 2024-05-04 180727](https://github.com/mandartule/Campify/assets/105853152/41c734a7-2a5f-4195-b7ce-63e66e1a20ac)
+
+### Dashboard
+<img width="3166" height="1728" alt="Screenshot 2025-09-27 191542" src="https://github.com/user-attachments/assets/5496c2da-ebf0-4687-844f-b9bb285ef2ff" />
+
+### Show Page
 
 ![Screenshot 2024-05-04 180832](https://github.com/mandartule/Campify/assets/105853152/cb78588f-5a12-47d0-9a4e-e6a9fbfe4f8a)
 
